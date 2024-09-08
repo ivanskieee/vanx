@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vanx/static/css/main.4e67c08a.css",
-    "main.js": "/vanx/static/js/main.7318b682.js",
+    "main.css": "/vanx/static/css/main.efef7052.css",
+    "main.js": "/vanx/static/js/main.d13838cb.js",
     "static/js/453.b2c48c62.chunk.js": "/vanx/static/js/453.b2c48c62.chunk.js",
     "static/media/van2.jpg": "/vanx/static/media/van2.4b6d3ff7ffe7c56766b8.jpg",
     "static/media/tourismbrilatapackage_deals.png": "/vanx/static/media/tourismbrilatapackage_deals.1153e18f498c15a86b66.png",
@@ -34,12 +34,12 @@
     "static/media/fa-v4compatibility.ttf": "/vanx/static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
     "static/media/fa-v4compatibility.woff2": "/vanx/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/vanx/index.html",
-    "main.4e67c08a.css.map": "/vanx/static/css/main.4e67c08a.css.map",
-    "main.7318b682.js.map": "/vanx/static/js/main.7318b682.js.map",
+    "main.efef7052.css.map": "/vanx/static/css/main.efef7052.css.map",
+    "main.d13838cb.js.map": "/vanx/static/js/main.d13838cb.js.map",
     "453.b2c48c62.chunk.js.map": "/vanx/static/js/453.b2c48c62.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e67c08a.css",
-    "static/js/main.7318b682.js"
+    "static/css/main.efef7052.css",
+    "static/js/main.d13838cb.js"
   ]
 }
