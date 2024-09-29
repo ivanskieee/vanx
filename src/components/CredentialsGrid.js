@@ -3,7 +3,9 @@ import Modal from './Modal';
 import picture1 from './pics/cert1.png';
 import picture2 from './pics/cert2.png';
 import picture3 from './pics/cert3.png';
-import picture4 from './pics/cert4.jpg';
+import picture4 from './pics/isite.jpg';
+import picture5 from './pics/digi.png';
+import picture6 from './pics/666.png';
 
 const credentials = [
   {
@@ -19,12 +21,12 @@ const credentials = [
   {
     title: 'Digital Imaging 101: Associating Digital Animation with Advertising',
     year: '2023',
-    image: picture4,
+    image: picture5,
   },
   {
     title: '“E-ffort: Put Forth a Successful Digital Folio”',
     year: '2023',
-    image: picture4,
+    image: picture6,
   },
   {
     title: 'International Multidisciplinary Research: “From a Languishing to a Flourishing Research Culture, through Collaboration”',
@@ -44,7 +46,7 @@ const CredentialsGrid = () => {
   return (
     <section id="credentials" className="credentials text-center py-20 bg-white px-4 md:px-10">
       <div className="mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-10">Certificates</h1>
+        <h1 className="text-4xl font-bold text-center mb-10">Credentials</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {credentials.map((credential, index) => (
             <div
