@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Banner from './components/Banner';
-import QuotesSection from './components/Quotes';
+import Skills from './components/Skills';
 import Projects from './components/Projects';
 import PicturesSection from './components/Pictures';
 import Footer from './components/Footer';
@@ -14,11 +14,9 @@ function App() {
     <div className="App" id="home">
       <Navbar />
       <Banner />
-      <QuotesSection />
+      <Skills />
       <Projects />
       <CredentialsGrid />
-      <LanguagesSec />
-      <PicturesSection />
       <Footer />
     </div>
   );

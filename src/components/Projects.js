@@ -5,7 +5,6 @@ import imahe3 from './pics/hotel_bookingbrilata.png';
 import imahe4 from './pics/tourismbrilatapackage_deals.png';
 import imahe5 from './pics/img3.png';
 import imahe6 from './pics/img4.png';
-import BGBG from './pics/darkk.png';
 
 const Projects = () => {
   const projects = [
@@ -51,22 +50,16 @@ const Projects = () => {
     <section
       id="projects"
       className="projects text-center py-20 px-4 md:px-10"
-      style={{
-        backgroundImage: `linear-gradient(to right, rgba(34, 34, 34, 0.9), rgba(17, 17, 17, 0.9)), url(${BGBG})`,
-        backgroundSize: 'cover',
-        backgroundBlendMode: 'overlay',
-        color: 'white',
-      }}
     >
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold text-center mb-10">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <div key={project.id} className="bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden">
               <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-gray-300">{project.description}</p>
+                <p className="text-black">{project.description}</p>
               </div>
             </div>
           ))}

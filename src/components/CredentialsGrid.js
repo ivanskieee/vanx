@@ -42,7 +42,7 @@ const CredentialsGrid = () => {
   const [selectedCredential, setSelectedCredential] = useState(null);
 
   return (
-    <section id="credentialssection" className="credentials text-center py-20 bg-gray-200 px-4 md:px-10">
+    <section id="credentials" className="credentials text-center py-20 bg-white px-4 md:px-10">
       <div className="mx-auto">
         <h1 className="text-4xl font-bold text-center mb-10">Certificates</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
