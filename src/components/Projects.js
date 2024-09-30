@@ -7,6 +7,8 @@ import imahe5 from './pics/img3.png';
 import imahe6 from './pics/img4.png';
 import vid1 from './pics/snake.mp4';
 import vid2 from './pics/44.mp4';
+import vid3 from './pics/cnc.mp4';
+import vid4 from './pics/eval.mp4';
 // Import other video files similarly if available
 
 const Projects = () => {
@@ -44,14 +46,14 @@ const Projects = () => {
       title: 'Cream and Cakes Inventory System',
       description: 'A system to manage inventory for a cream and cakes shop.',
       image: imahe6,
-      video: 'path/to/video5.mp4', // Ensure the path is correct
+      video: vid3, // Ensure the path is correct
     },
     {
       id: 6,
       title: 'SPC Evaluation System',
       description: 'A system for Statistical Process Control (SPC) evaluation.',
       image: imahe5,
-      video: 'path/to/video6.mp4', // Ensure the path is correct
+      video: vid4, // Ensure the path is correct
     },
   ];
 
