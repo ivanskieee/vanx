@@ -9,6 +9,11 @@ import picture6 from './pics/666.png';
 
 const credentials = [
   {
+    title: '“Ctrl+Alt+Defend: Cybersecurity 101 for Students”',
+    year: '2024',
+    image: picture2,
+  },
+  {
     title: '3rd iSITE Conference Developing Industry Skills & Technological Advancement through Research',
     year: '2023',
     image: picture4, // Replace with actual image paths
@@ -32,11 +37,6 @@ const credentials = [
     title: 'International Multidisciplinary Research: “From a Languishing to a Flourishing Research Culture, through Collaboration”',
     year: '2022',
     image: picture3,
-  },
-  {
-    title: '“Ctrl+Alt+Defend: Cybersecurity 101 for Students”',
-    year: '2024',
-    image: picture2,
   },
 ];
 

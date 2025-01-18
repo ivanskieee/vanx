@@ -3,12 +3,12 @@ import imahe1 from './pics/img1.png';
 import imahe2 from './pics/img2.png';
 import imahe3 from './pics/hotel_bookingbrilata.png';
 import imahe4 from './pics/tourismbrilatapackage_deals.png';
-import imahe5 from './pics/img3.png';
+import imahe5 from './pics/111.png';
 import imahe6 from './pics/img4.png';
 import vid1 from './pics/snake.mp4';
 import vid2 from './pics/44.mp4';
 import vid3 from './pics/cnc.mp4';
-import vid4 from './pics/eval.mp4';
+import vid4 from './pics/bsit4-eva-lution.mp4';
 // Import other video files similarly if available
 
 const Projects = () => {
@@ -50,8 +50,8 @@ const Projects = () => {
     },
     {
       id: 6,
-      title: 'SPC Evaluation System',
-      description: 'A system for Statistical Process Control (SPC) evaluation.',
+      title: 'Capstone Project Bsit4-Eva-lution',
+      description: 'A new approach to the evaluation system of San Pablo Colleges.',
       image: imahe5,
       video: vid4, // Ensure the path is correct
     },

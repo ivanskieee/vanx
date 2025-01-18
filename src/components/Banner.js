@@ -10,9 +10,11 @@ import BS from './pics/55.png';
 import IT from './pics/66.png';
 import REACT from './pics/88.png';
 import NODE from './pics/99.png';
+import RUBY from './pics/ror.png';
+import TAIL from './pics/tail.png';
 
 const Banner = () => {
-  const logos = [OIP, OIPS, PYTHO, CS, BS, IT, REACT, NODE];
+  const logos = [OIP, OIPS, PYTHO, CS, BS, IT, REACT, NODE, RUBY, TAIL];
 
   const marqueeContainerStyle = {
     display: 'flex',
@@ -50,14 +52,14 @@ const Banner = () => {
             className="w-64 h-80 rounded-lg border-4 border-gray-200 shadow-lg object-cover"
           />
           <p className="text-sm sm:text-base md:text-xl text-gray-700 font-medium text-right mt-2">
-            Aspiring Full-stack Web Developer | Data Analyst | IT Enthusiast
+          An Aspiring Web Developer | Data Analyst | IT Enthusiast
           </p>
         </div>
   
         {/* Desktop View: Left Section with Text */}
         <div className="hidden md:flex flex-1 flex-col justify-center items-start text-left space-y-2 md:ml-20">
           <p className="text-base md:text-xl text-gray-700 font-medium">
-            Aspiring Full-stack Web Developer | Data Analyst | IT Enthusiast
+            An Aspiring Web Developer | Data Analyst | IT Enthusiast
           </p>
           <p className="text-base md:text-lg text-gray-600 font-light">
             Passionate about building web solutions and making data-driven decisions.
