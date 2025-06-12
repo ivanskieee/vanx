@@ -12,7 +12,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 function App() {
   return (
     <div className="App" id="home">
-      <Navbar />
       <Banner />
       <Skills />
       <Projects />
