@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App" id="home">
       <Banner />
-      <Skills />
       <Projects />
       <CredentialsGrid />
       <Footer />
