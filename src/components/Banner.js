@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, Code, Database, GitBranch, Wrench, BarChart3, Lightbulb } from 'lucide-react';
-import bgimg from "./pics/ayban.png";
+import {
+  Menu,
+  X,
+  Sun,
+  Moon,
+  Code,
+  Database,
+  GitBranch,
+  Wrench,
+  BarChart3,
+  Lightbulb,
+} from "lucide-react";
+import bgimg from "./pics/ayban2.png";
 import OIP from "./pics/11.png";
 import OIPS from "./pics/22.png";
 import PYTHO from "./pics/33.png";
@@ -19,6 +30,18 @@ const CombinedNavbarBanner = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isSkillsVisible, setIsSkillsVisible] = useState(false);
 
+  // Typing effect states
+  const [texts] = useState([
+    "Hello, I'm Ivan Brilata",
+    "Aspiring Back-end Developer",
+    "Problem Solver",
+    "Ruby on Rails Developer",
+  ]);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [charIndex, setCharIndex] = useState(0);
+
   const logos = [
     { name: "HTML", color: "#E34F26", darkColor: "#FF6B47", image: OIP },
     { name: "CSS", color: "#1572B6", darkColor: "#4DABF7", image: OIPS },
@@ -31,6 +54,39 @@ const CombinedNavbarBanner = () => {
     { name: "Ruby", color: "#CC342D", darkColor: "#FF6B6B", image: RUBY },
     { name: "Tailwind", color: "#06B6D4", darkColor: "#22D3EE", image: TAIL },
   ];
+
+  // Typing effect useEffect
+  useEffect(() => {
+    const timeout = setTimeout(
+      () => {
+        const fullText = texts[currentTextIndex];
+
+        if (!isDeleting) {
+          // Typing
+          if (charIndex < fullText.length) {
+            setCurrentText(fullText.substring(0, charIndex + 1));
+            setCharIndex(charIndex + 1);
+          } else {
+            // Pause before deleting
+            setTimeout(() => setIsDeleting(true), 2000);
+          }
+        } else {
+          // Deleting
+          if (charIndex > 0) {
+            setCurrentText(fullText.substring(0, charIndex - 1));
+            setCharIndex(charIndex - 1);
+          } else {
+            // Move to next text
+            setIsDeleting(false);
+            setCurrentTextIndex((currentTextIndex + 1) % texts.length);
+          }
+        }
+      },
+      isDeleting ? 50 : 100
+    );
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, currentTextIndex, texts]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -52,7 +108,7 @@ const CombinedNavbarBanner = () => {
     });
   };
 
-   useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -62,7 +118,7 @@ const CombinedNavbarBanner = () => {
       { threshold: 0.1 }
     );
 
-    const element = document.getElementById('skills');
+    const element = document.getElementById("skills");
     if (element) {
       observer.observe(element);
     }
@@ -86,270 +142,179 @@ const CombinedNavbarBanner = () => {
     ? "bg-gray-900/95 backdrop-blur-md border-gray-700/50"
     : "bg-white/95 backdrop-blur-md border-gray-200/50";
 
-    const skills = [
+  const skills = [
     {
       icon: Code,
       title: "Web Development",
-      description: "Working knowledge of HTML, CSS, JavaScript, PHP, Ruby and Python for creating responsive websites.",
+      description:
+        "Working knowledge of HTML, CSS, JavaScript, PHP, Ruby and Python for creating responsive websites.",
       color: "#E34F26",
-      darkColor: "#FF6B47"
+      darkColor: "#FF6B47",
     },
     {
       icon: Database,
       title: "Database Management",
-      description: "Familiar with using SQL and database management systems like MySQL.",
+      description:
+        "Familiar with using SQL and database management systems like MySQL.",
       color: "#1572B6",
-      darkColor: "#4DABF7"
+      darkColor: "#4DABF7",
     },
     {
       icon: GitBranch,
       title: "Ruby on Rails",
-      description: "Proficient in using Ruby on Rails in developing an application, especially a web application.",
+      description:
+        "Proficient in using Ruby on Rails in developing an application, especially a web application.",
       color: "#CC342D",
-      darkColor: "#FF6B6B"
+      darkColor: "#FF6B6B",
     },
     {
       icon: Wrench,
       title: "Version Control",
-      description: "Proficient in using Git for version control and collaboration on software projects.",
+      description:
+        "Proficient in using Git for version control and collaboration on software projects.",
       color: "#339933",
-      darkColor: "#69DB7C"
+      darkColor: "#69DB7C",
     },
     {
       icon: BarChart3,
       title: "Data Analysis",
       description: "Basic knowledge in analyzing data sets.",
       color: "#3776AB",
-      darkColor: "#5C9BD5"
+      darkColor: "#5C9BD5",
     },
     {
       icon: Lightbulb,
       title: "Problem Solving",
-      description: "Adept at troubleshooting technical issues and finding innovative solutions.",
+      description:
+        "Adept at troubleshooting technical issues and finding innovative solutions.",
       color: "#7952B3",
-      darkColor: "#9775FA"
-    }
+      darkColor: "#9775FA",
+    },
   ];
 
   return (
     <div
       className={`relative min-h-screen overflow-hidden transition-all duration-500 ${themeClasses}`}
     >
-     {/* Navbar */}
+      {/* Navbar */}
+      {/* Minimalist Navbar */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-700 ${
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           darkMode
-            ? "bg-black/80 border-b border-white/[0.08]"
-            : "bg-white/80 border-b border-black/[0.08]"
+            ? "bg-black/20 backdrop-blur-md"
+            : "bg-white/20 backdrop-blur-md"
         }`}
-        style={{
-          backdropFilter: 'blur(32px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(32px) saturate(180%)',
-          background: darkMode 
-            ? 'linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(10,10,10,0.80) 100%)'
-            : 'linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(250,250,250,0.80) 100%)'
-        }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            
-            {/* Brand */}
+            {/* Brand - Minimalist Logo */}
             <div className="flex items-center">
-              <div className="relative group">
-                <span
-                  className={`text-xl font-semibold tracking-[-0.02em] transition-all duration-500 ${
+              <div
+                className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg transition-all duration-300 ${
+                  darkMode ? "bg-white text-black" : "bg-black text-white"
+                }`}
+              >
+                Ib.
+              </div>
+            </div>
+
+            {/* Desktop Navigation - Minimal */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {[
+                { name: "Home" },
+                { name: "Skills" },
+                { name: "Projects" },
+                { name: "Credentials" },
+                { name: "Contact" },
+              ].map((item, index) => (
+                <a
+                  key={item.name}
+                  href={`#${item.name.toLowerCase()}`}
+                  className={`flex items-center space-x-2 text-lg font-semibold transition-all duration-300 hover:scale-105 ${
                     darkMode
-                      ? "text-white"
-                      : "text-gray-900"
+                      ? "text-gray-300 hover:text-white"
+                      : "text-gray-700 hover:text-black"
                   }`}
                 >
-                  Ivan Brilata
-                </span>
-                <div
-                  className={`absolute -bottom-0.5 left-0 h-[1px] w-0 transition-all duration-300 group-hover:w-full ${
-                    darkMode 
-                      ? "bg-white/60" 
-                      : "bg-gray-900/60"
-                  }`}
-                ></div>
-              </div>
+                  <span className="text-base">{item.icon}</span>
+                  <span>{item.name}</span>
+                </a>
+              ))}
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-              <div
-                className={`flex items-center space-x-1 p-1 rounded-full transition-all duration-300 ${
-                  darkMode
-                    ? "bg-white/[0.06] border border-white/[0.08]"
-                    : "bg-black/[0.04] border border-black/[0.06]"
-                }`}
-                style={{
-                  backdropFilter: 'blur(16px)',
-                }}
-              >
-                {["Home", "Skills", "Projects", "Credentials", "Contact"].map((item, index) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 group ${
-                      darkMode
-                        ? "text-gray-300 hover:text-white hover:bg-white/[0.08]"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-black/[0.06]"
-                    }`}
-                  >
-                    <span className="relative z-10">{item}</span>
-                    <div
-                      className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ${
-                        darkMode
-                          ? "bg-gradient-to-r from-white/[0.05] to-white/[0.02]"
-                          : "bg-gradient-to-r from-black/[0.03] to-black/[0.01]"
-                      }`}
-                    ></div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Controls */}
+            {/* Controls - Minimal */}
             <div className="flex items-center space-x-3">
-              
               {/* Theme Toggle */}
               <button
                 onClick={toggleDarkMode}
-                className={`relative p-2.5 rounded-full transition-all duration-300 group ${
+                className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
                   darkMode
-                    ? "bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] hover:border-white/[0.12]"
-                    : "bg-black/[0.04] hover:bg-black/[0.08] border border-black/[0.06] hover:border-black/[0.1]"
+                    ? "bg-white/10 hover:bg-white/20 text-white"
+                    : "bg-black/10 hover:bg-black/20 text-black"
                 }`}
-                style={{
-                  backdropFilter: 'blur(16px)',
-                }}
               >
-                <div className="relative z-10">
-                  {darkMode ? (
-                    <Sun className="w-4 h-4 text-amber-400 transition-transform duration-300 group-hover:rotate-12" />
-                  ) : (
-                    <Moon className="w-4 h-4 text-slate-700 transition-transform duration-300 group-hover:-rotate-12" />
-                  )}
-                </div>
-                <div
-                  className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                    darkMode
-                      ? "bg-gradient-to-br from-amber-400/[0.1] to-orange-400/[0.05]"
-                      : "bg-gradient-to-br from-blue-400/[0.08] to-purple-400/[0.04]"
-                  }`}
-                ></div>
+                {darkMode ? (
+                  <Sun className="w-4 h-4" />
+                ) : (
+                  <Moon className="w-4 h-4" />
+                )}
               </button>
-
-              {/* Desktop CTA Button */}
-              <div className="hidden lg:block">
-                <button
-                  className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 group overflow-hidden ${
-                    darkMode
-                      ? "bg-white text-black hover:bg-gray-100"
-                      : "bg-black text-white hover:bg-gray-800"
-                  }`}
-                >
-                  <span className="relative z-10">Get in Touch</span>
-                  <div
-                    className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                      darkMode
-                        ? "bg-gradient-to-r from-gray-100 to-white"
-                        : "bg-gradient-to-r from-gray-800 to-black"
-                    }`}
-                  ></div>
-                </button>
-              </div>
 
               {/* Mobile Menu Button */}
               <button
                 onClick={toggleMenu}
-                className={`lg:hidden relative p-2.5 rounded-full transition-all duration-300 ${
+                className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${
                   darkMode
-                    ? "bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08]"
-                    : "bg-black/[0.04] hover:bg-black/[0.08] border border-black/[0.06]"
+                    ? "bg-white/10 hover:bg-white/20 text-white"
+                    : "bg-black/10 hover:bg-black/20 text-black"
                 }`}
-                style={{
-                  backdropFilter: 'blur(16px)',
-                }}
               >
-                <div className="relative w-4 h-4">
-                  <span
-                    className={`absolute left-0 top-0 w-4 h-0.5 rounded-full transition-all duration-300 ${
-                      darkMode ? "bg-white" : "bg-black"
-                    } ${
-                      menuOpen ? "rotate-45 top-1.5" : "top-0"
-                    }`}
-                  ></span>
-                  <span
-                    className={`absolute left-0 top-1.5 w-4 h-0.5 rounded-full transition-all duration-300 ${
-                      darkMode ? "bg-white" : "bg-black"
-                    } ${
-                      menuOpen ? "opacity-0" : "opacity-100"
-                    }`}
-                  ></span>
-                  <span
-                    className={`absolute left-0 top-3 w-4 h-0.5 rounded-full transition-all duration-300 ${
-                      darkMode ? "bg-white" : "bg-black"
-                    } ${
-                      menuOpen ? "-rotate-45 top-1.5" : "top-3"
-                    }`}
-                  ></span>
-                </div>
+                {menuOpen ? (
+                  <X className="w-4 h-4" />
+                ) : (
+                  <Menu className="w-4 h-4" />
+                )}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <div
-          className={`lg:hidden absolute top-full left-0 w-full transition-all duration-500 ${
-            menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-          }`}
-          style={{
-            background: darkMode 
-              ? 'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(10,10,10,0.98) 100%)'
-              : 'linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(250,250,250,0.98) 100%)',
-            backdropFilter: 'blur(32px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(32px) saturate(180%)',
-            borderBottom: darkMode ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)'
-          }}
-        >
-          <div className="max-w-7xl mx-auto px-6 py-6">
-            <div className="space-y-1">
-              {["Home", "Skills", "Projects", "Credentials", "Contact"].map((item, index) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={toggleMenu}
-                  className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 ${
-                    darkMode
-                      ? "text-gray-200 hover:text-white hover:bg-white/[0.06]"
-                      : "text-gray-700 hover:text-gray-900 hover:bg-black/[0.04]"
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 50}ms`
-                  }}
-                >
-                  {item}
-                </a>
-              ))}
-              
-              {/* Mobile CTA */}
-              <div className="pt-4 mt-4 border-t border-white/[0.08]">
-                <button
-                  className={`w-full px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 ${
-                    darkMode
-                      ? "bg-white text-black hover:bg-gray-100"
-                      : "bg-black text-white hover:bg-gray-800"
-                  }`}
-                >
-                  Get in Touch
-                </button>
+        {/* Mobile Menu - Minimal */}
+        {menuOpen && (
+          <div
+            className={`lg:hidden absolute top-full left-0 w-full transition-all duration-300 ${
+              darkMode
+                ? "bg-black/90 backdrop-blur-md border-t border-white/10"
+                : "bg-white/90 backdrop-blur-md border-t border-black/10"
+            }`}
+          >
+            <div className="max-w-7xl mx-auto px-6 py-4">
+              <div className="space-y-2">
+                {[
+                  { name: "Home" },
+                  { name: "Skills" },
+                  { name: "Projects" },
+                  { name: "Credentials" },
+                  { name: "Contact" },
+                ].map((item, index) => (
+                  <a
+                    key={item.name}
+                    href={`#${item.name.toLowerCase()}`}
+                    onClick={toggleMenu}
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                      darkMode
+                        ? "text-gray-300 hover:text-white hover:bg-white/10"
+                        : "text-gray-700 hover:text-black hover:bg-black/10"
+                    }`}
+                  >
+                    <span className="text-lg">{item.icon}</span>
+                    <span className="font-medium">{item.name}</span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-        </div>
+        )}
       </nav>
 
       {/* Enhanced Professional Background */}
@@ -358,34 +323,38 @@ const CombinedNavbarBanner = () => {
         <div
           className="absolute opacity-40"
           style={{
-            top: '10%',
-            left: '10%',
-            width: '600px',
-            height: '600px',
-            background: darkMode 
-              ? 'radial-gradient(circle, rgba(59,130,246,0.05) 0%, rgba(147,51,234,0.02) 50%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, rgba(147,51,234,0.04) 50%, transparent 70%)',
-            borderRadius: '50%',
-            filter: 'blur(80px)',
-            animation: 'drift-slow 40s ease-in-out infinite',
-            transform: `translate(${mousePosition.x * 2}px, ${mousePosition.y * 2}px)`
+            top: "10%",
+            left: "10%",
+            width: "600px",
+            height: "600px",
+            background: darkMode
+              ? "radial-gradient(circle, rgba(59,130,246,0.05) 0%, rgba(147,51,234,0.02) 50%, transparent 70%)"
+              : "radial-gradient(circle, rgba(59,130,246,0.08) 0%, rgba(147,51,234,0.04) 50%, transparent 70%)",
+            borderRadius: "50%",
+            filter: "blur(80px)",
+            animation: "drift-slow 40s ease-in-out infinite",
+            transform: `translate(${mousePosition.x * 2}px, ${
+              mousePosition.y * 2
+            }px)`,
           }}
         ></div>
-        
+
         <div
           className="absolute opacity-30"
           style={{
-            bottom: '20%',
-            right: '15%',
-            width: '500px',
-            height: '500px',
-            background: darkMode 
-              ? 'radial-gradient(circle, rgba(16,185,129,0.04) 0%, rgba(59,130,246,0.02) 50%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, rgba(59,130,246,0.03) 50%, transparent 70%)',
-            borderRadius: '50%',
-            filter: 'blur(100px)',
-            animation: 'drift-slow 50s ease-in-out infinite reverse',
-            transform: `translate(${mousePosition.x * -1.5}px, ${mousePosition.y * -1.5}px)`
+            bottom: "20%",
+            right: "15%",
+            width: "500px",
+            height: "500px",
+            background: darkMode
+              ? "radial-gradient(circle, rgba(16,185,129,0.04) 0%, rgba(59,130,246,0.02) 50%, transparent 70%)"
+              : "radial-gradient(circle, rgba(16,185,129,0.06) 0%, rgba(59,130,246,0.03) 50%, transparent 70%)",
+            borderRadius: "50%",
+            filter: "blur(100px)",
+            animation: "drift-slow 50s ease-in-out infinite reverse",
+            transform: `translate(${mousePosition.x * -1.5}px, ${
+              mousePosition.y * -1.5
+            }px)`,
           }}
         ></div>
 
@@ -394,12 +363,18 @@ const CombinedNavbarBanner = () => {
           className="absolute inset-0 opacity-[0.015]"
           style={{
             backgroundImage: `
-              linear-gradient(${darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'} 1px, transparent 1px),
-              linear-gradient(90deg, ${darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'} 1px, transparent 1px)
+              linear-gradient(${
+                darkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)"
+              } 1px, transparent 1px),
+              linear-gradient(90deg, ${
+                darkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)"
+              } 1px, transparent 1px)
             `,
-            backgroundSize: '80px 80px',
-            transform: `translate(${mousePosition.x * 4}px, ${mousePosition.y * 4}px)`,
-            animation: 'grid-drift 120s linear infinite'
+            backgroundSize: "80px 80px",
+            transform: `translate(${mousePosition.x * 4}px, ${
+              mousePosition.y * 4
+            }px)`,
+            animation: "grid-drift 120s linear infinite",
           }}
         ></div>
 
@@ -408,33 +383,34 @@ const CombinedNavbarBanner = () => {
           className="absolute inset-0 opacity-[0.02] mix-blend-overlay"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            backgroundSize: '256px 256px'
+            backgroundSize: "256px 256px",
           }}
         ></div>
       </div>
 
       <style jsx>{`
         @keyframes drift-slow {
-          0%, 100% { 
-            transform: translate(0, 0) rotate(0deg) scale(1); 
+          0%,
+          100% {
+            transform: translate(0, 0) rotate(0deg) scale(1);
           }
-          25% { 
-            transform: translate(30px, -20px) rotate(90deg) scale(1.05); 
+          25% {
+            transform: translate(30px, -20px) rotate(90deg) scale(1.05);
           }
-          50% { 
-            transform: translate(-20px, 30px) rotate(180deg) scale(0.95); 
+          50% {
+            transform: translate(-20px, 30px) rotate(180deg) scale(0.95);
           }
-          75% { 
-            transform: translate(-30px, -30px) rotate(270deg) scale(1.02); 
+          75% {
+            transform: translate(-30px, -30px) rotate(270deg) scale(1.02);
           }
         }
-        
+
         @keyframes grid-drift {
-          0% { 
-            transform: translate(0, 0); 
+          0% {
+            transform: translate(0, 0);
           }
-          100% { 
-            transform: translate(-80px, -80px); 
+          100% {
+            transform: translate(-80px, -80px);
           }
         }
       `}</style>
@@ -446,7 +422,7 @@ const CombinedNavbarBanner = () => {
       >
         {/* Left Content */}
         <div
-          className={`flex-1 max-w-2xl transition-all duration-1000 ${
+          className={`flex-1 max-w-2xl pl-8 lg:pl-16 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -466,21 +442,33 @@ const CombinedNavbarBanner = () => {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1
-                className={`text-4xl lg:text-6xl font-bold leading-tight transition-all duration-500 ${
-                  darkMode ? "text-white" : "text-gray-900"
+                className={`text-4xl lg:text-6xl font-bold leading-tight transition-all duration-500 min-h-[4rem] lg:min-h-[7rem] ${
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
-                Aspiring
+                {currentText}
                 <span
-                  className={`block bg-clip-text text-transparent transition-all duration-500 ${
-                    darkMode
-                      ? "bg-gradient-to-r from-white via-gray-200 to-gray-300"
-                      : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-600"
+                  className={`inline-block w-0.5 h-[1em] ml-1 ${
+                    darkMode ? "bg-white" : "bg-black"
                   }`}
-                >
-                  Back-end Developer
-                </span>
+                  style={{
+                    animation: "blink 1s infinite",
+                  }}
+                />
               </h1>
+
+              <style jsx>{`
+                @keyframes blink {
+                  0%,
+                  50% {
+                    opacity: 1;
+                  }
+                  51%,
+                  100% {
+                    opacity: 0;
+                  }
+                }
+              `}</style>
             </div>
 
             {/* Description */}
@@ -518,47 +506,84 @@ const CombinedNavbarBanner = () => {
 
         {/* Right Content - Profile Image */}
         <div
-          className={`flex-1 flex justify-center lg:justify-end mt-12 lg:mt-0 transition-all duration-1000 delay-300 ${
+          className={`flex-1 flex justify-center lg:justify-end mt-12 lg:mt-0 pr-8 lg:pr-16 transition-all duration-1000 delay-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="relative">
-            {/* Profile Image Container */}
             <div className="relative group">
+              {/* Modern ambient glow */}
               <div
-                className={`absolute -inset-4 rounded-2xl blur-lg opacity-60 group-hover:opacity-80 transition-all duration-300 ${
+                className={`absolute -inset-12 transition-all duration-1000 ${
                   darkMode
-                    ? "bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400"
-                    : "bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100"
+                    ? "bg-gradient-to-tr from-cyan-500/10 via-purple-500/8 to-pink-500/10 blur-3xl"
+                    : "bg-gradient-to-tr from-blue-500/8 via-indigo-500/6 to-purple-500/8 blur-3xl"
                 }`}
               ></div>
-              <div
-                className={`relative w-80 h-96 lg:w-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 ${
-                  darkMode
-                    ? "border border-gray-700 bg-gray-800"
-                    : "border border-gray-200 bg-white"
-                }`}
-              >
-                {/* Your Profile Image */}
+
+              {/* Main image container */}
+              <div className="relative w-80 h-96 lg:w-96 lg:h-[28rem] transition-all duration-700">
                 <img
                   src={bgimg}
                   alt="Ivan's Profile"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain transition-all duration-700 group-hover:brightness-110 group-hover:saturate-110"
+                  style={{
+                    filter: darkMode
+                      ? `
+                drop-shadow(0 40px 100px rgba(56, 189, 248, 0.15))
+                drop-shadow(0 20px 60px rgba(147, 51, 234, 0.10))
+                drop-shadow(0 0 40px rgba(236, 72, 153, 0.08))
+                contrast(108%)
+                saturate(105%)
+              `
+                      : `
+                drop-shadow(0 40px 100px rgba(59, 130, 246, 0.20))
+                drop-shadow(0 20px 60px rgba(99, 102, 241, 0.15))
+                drop-shadow(0 0 40px rgba(139, 92, 246, 0.10))
+                contrast(108%)
+                saturate(105%)
+              `,
+                  }}
                 />
-              </div>
-            </div>
 
-            {/* Floating Elements */}
-            <div
-              className={`absolute -top-4 -right-4 w-8 h-8 rounded-full animate-bounce delay-1000 shadow-lg ${
-                darkMode ? "bg-gray-300" : "bg-gray-700"
-              }`}
-            ></div>
-            <div
-              className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full animate-bounce delay-2000 shadow-lg ${
-                darkMode ? "bg-gray-400" : "bg-gray-600"
-              }`}
-            ></div>
+                {/* Modern holographic reflection */}
+                <div
+                  className={`absolute bottom-0 left-0 right-0 h-16 transition-all duration-700 opacity-30 group-hover:opacity-50 ${
+                    darkMode
+                      ? "bg-gradient-to-t from-cyan-400/20 via-purple-400/10 to-transparent"
+                      : "bg-gradient-to-t from-blue-400/20 via-indigo-400/10 to-transparent"
+                  }`}
+                  style={{
+                    maskImage:
+                      "linear-gradient(to top, black 0%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to top, black 0%, transparent 100%)",
+                    transform: "scaleY(-1)",
+                    filter: "blur(2px)",
+                  }}
+                ></div>
+              </div>
+
+              {/* Floating particles effect */}
+              <div
+                className={`absolute top-1/4 -left-2 w-1 h-1 rounded-full animate-pulse transition-all duration-1000 ${
+                  darkMode ? "bg-cyan-400/60" : "bg-blue-500/60"
+                }`}
+                style={{ animationDelay: "0s" }}
+              ></div>
+              <div
+                className={`absolute top-1/3 -right-3 w-1.5 h-1.5 rounded-full animate-pulse transition-all duration-1000 ${
+                  darkMode ? "bg-purple-400/60" : "bg-indigo-500/60"
+                }`}
+                style={{ animationDelay: "1s" }}
+              ></div>
+              <div
+                className={`absolute bottom-1/4 -left-1 w-0.5 h-0.5 rounded-full animate-pulse transition-all duration-1000 ${
+                  darkMode ? "bg-pink-400/60" : "bg-purple-500/60"
+                }`}
+                style={{ animationDelay: "2s" }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
@@ -640,48 +665,67 @@ const CombinedNavbarBanner = () => {
           animation-play-state: paused;
         }
       `}</style>
-       <section id="skills" className="relative py-20 px-6 lg:px-12 overflow-hidden">
+      <section
+        id="skills"
+        className="relative py-20 px-6 lg:px-12 overflow-hidden"
+      >
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className={`absolute top-1/4 left-1/6 w-64 h-64 rounded-full blur-3xl animate-pulse ${
-            darkMode ? "bg-gray-700/20" : "bg-gray-200/30"
-          }`}></div>
-          <div className={`absolute bottom-1/4 right-1/6 w-80 h-80 rounded-full blur-3xl animate-pulse delay-1000 ${
-            darkMode ? "bg-gray-600/20" : "bg-gray-300/30"
-          }`}></div>
+          <div
+            className={`absolute top-1/4 left-1/6 w-64 h-64 rounded-full blur-3xl animate-pulse ${
+              darkMode ? "bg-gray-700/20" : "bg-gray-200/30"
+            }`}
+          ></div>
+          <div
+            className={`absolute bottom-1/4 right-1/6 w-80 h-80 rounded-full blur-3xl animate-pulse delay-1000 ${
+              darkMode ? "bg-gray-600/20" : "bg-gray-300/30"
+            }`}
+          ></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${
-            isSkillsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}>
-            <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 transition-all duration-500 ${
-              darkMode
-                ? "bg-blue-900/50 border border-blue-700 text-blue-300"
-                : "bg-blue-50 border border-blue-200 text-blue-700"
-            }`}>
+          <div
+            className={`text-center mb-16 transition-all duration-1000 ${
+              isSkillsVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
+            <div
+              className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 transition-all duration-500 ${
+                darkMode
+                  ? "bg-blue-900/50 border border-blue-700 text-blue-300"
+                  : "bg-blue-50 border border-blue-200 text-blue-700"
+              }`}
+            >
               <div className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
               Technical Expertise
             </div>
 
-            <h2 className={`text-4xl lg:text-5xl font-bold mb-6 transition-all duration-500 ${
-              darkMode ? "text-white" : "text-gray-900"
-            }`}>
-              Skills &{' '}
-              <span className={`bg-clip-text text-transparent transition-all duration-500 ${
-                darkMode
-                  ? "bg-gradient-to-r from-white via-gray-200 to-gray-300"
-                  : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-600"
-              }`}>
+            <h2
+              className={`text-4xl lg:text-5xl font-bold mb-6 transition-all duration-500 ${
+                darkMode ? "text-white" : "text-gray-900"
+              }`}
+            >
+              Skills &{" "}
+              <span
+                className={`bg-clip-text text-transparent transition-all duration-500 ${
+                  darkMode
+                    ? "bg-gradient-to-r from-white via-gray-200 to-gray-300"
+                    : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-600"
+                }`}
+              >
                 Capabilities
               </span>
             </h2>
 
-            <p className={`text-lg leading-relaxed max-w-3xl mx-auto transition-all duration-500 ${
-              darkMode ? "text-gray-300" : "text-gray-600"
-            }`}>
-              Here are some key skills that I have developed as an IT student, 
+            <p
+              className={`text-lg leading-relaxed max-w-3xl mx-auto transition-all duration-500 ${
+                darkMode ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              Here are some key skills that I have developed as an IT student,
               building a strong foundation for innovative web solutions.
             </p>
           </div>
@@ -693,23 +737,31 @@ const CombinedNavbarBanner = () => {
               return (
                 <div
                   key={index}
-                  className={`group relative transition-all duration-1000 delay-${index * 100} ${
-                    isSkillsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                  className={`group relative transition-all duration-1000 delay-${
+                    index * 100
+                  } ${
+                    isSkillsVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-10"
                   }`}
                 >
                   {/* Card Background Glow */}
-                  <div className={`absolute -inset-1 rounded-2xl blur-sm opacity-0 group-hover:opacity-60 transition-all duration-300 ${
-                    darkMode
-                      ? "bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400"
-                      : "bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100"
-                  }`}></div>
+                  <div
+                    className={`absolute -inset-1 rounded-2xl blur-sm opacity-0 group-hover:opacity-60 transition-all duration-300 ${
+                      darkMode
+                        ? "bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400"
+                        : "bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100"
+                    }`}
+                  ></div>
 
                   {/* Main Card */}
-                  <div className={`relative p-8 rounded-2xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl border ${
-                    darkMode
-                      ? "bg-gray-800/80 backdrop-blur-md border-gray-700/50 hover:border-gray-600"
-                      : "bg-white/80 backdrop-blur-md border-gray-200/50 hover:border-gray-300"
-                  }`}>
+                  <div
+                    className={`relative p-8 rounded-2xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl border ${
+                      darkMode
+                        ? "bg-gray-800/80 backdrop-blur-md border-gray-700/50 hover:border-gray-600"
+                        : "bg-white/80 backdrop-blur-md border-gray-200/50 hover:border-gray-300"
+                    }`}
+                  >
                     {/* Icon */}
                     <div className="relative mb-6">
                       <div
@@ -718,45 +770,59 @@ const CombinedNavbarBanner = () => {
                         }`}
                         style={{
                           borderColor: darkMode ? skill.darkColor : skill.color,
-                          borderWidth: '2px',
-                          borderStyle: 'solid'
+                          borderWidth: "2px",
+                          borderStyle: "solid",
                         }}
                       >
                         <IconComponent
                           className="w-8 h-8"
                           style={{
-                            color: darkMode ? skill.darkColor : skill.color
+                            color: darkMode ? skill.darkColor : skill.color,
                           }}
                         />
                       </div>
-                      
+
                       {/* Icon Glow Effect */}
                       <div
                         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"
                         style={{
-                          backgroundColor: darkMode ? skill.darkColor : skill.color,
+                          backgroundColor: darkMode
+                            ? skill.darkColor
+                            : skill.color,
                         }}
                       ></div>
                     </div>
 
                     {/* Content */}
                     <div className="space-y-4">
-                      <h3 className={`text-xl font-semibold transition-all duration-300 ${
-                        darkMode ? "text-white group-hover:text-gray-100" : "text-gray-900 group-hover:text-gray-800"
-                      }`}>
+                      <h3
+                        className={`text-xl font-semibold transition-all duration-300 ${
+                          darkMode
+                            ? "text-white group-hover:text-gray-100"
+                            : "text-gray-900 group-hover:text-gray-800"
+                        }`}
+                      >
                         {skill.title}
                       </h3>
-                      <p className={`leading-relaxed transition-all duration-300 ${
-                        darkMode ? "text-gray-300 group-hover:text-gray-200" : "text-gray-600 group-hover:text-gray-700"
-                      }`}>
+                      <p
+                        className={`leading-relaxed transition-all duration-300 ${
+                          darkMode
+                            ? "text-gray-300 group-hover:text-gray-200"
+                            : "text-gray-600 group-hover:text-gray-700"
+                        }`}
+                      >
                         {skill.description}
                       </p>
                     </div>
 
                     {/* Decorative Elements */}
-                    <div className={`absolute top-4 right-4 w-2 h-2 rounded-full transition-all duration-300 ${
-                      darkMode ? "bg-gray-600 group-hover:bg-gray-500" : "bg-gray-300 group-hover:bg-gray-400"
-                    }`}></div>
+                    <div
+                      className={`absolute top-4 right-4 w-2 h-2 rounded-full transition-all duration-300 ${
+                        darkMode
+                          ? "bg-gray-600 group-hover:bg-gray-500"
+                          : "bg-gray-300 group-hover:bg-gray-400"
+                      }`}
+                    ></div>
                   </div>
                 </div>
               );
@@ -764,27 +830,37 @@ const CombinedNavbarBanner = () => {
           </div>
 
           {/* Bottom CTA */}
-          <div className={`text-center mt-16 transition-all duration-1000 delay-700 ${
-            isSkillsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}>
+          <div
+            className={`text-center mt-16 transition-all duration-1000 delay-700 ${
+              isSkillsVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className={`group relative px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                darkMode
-                  ? "bg-gradient-to-r from-white to-gray-200 text-gray-900 hover:shadow-white/25"
-                  : "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:shadow-gray-500/25"
-              }`}>
-                <span className="relative z-10">View My Projects</span>
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+              <button
+                className={`group relative px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                   darkMode
-                    ? "bg-gradient-to-r from-gray-200 to-white"
-                    : "bg-gradient-to-r from-gray-700 to-gray-900"
-                }`}></div>
+                    ? "bg-gradient-to-r from-white to-gray-200 text-gray-900 hover:shadow-white/25"
+                    : "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:shadow-gray-500/25"
+                }`}
+              >
+                <span className="relative z-10">View My Projects</span>
+                <div
+                  className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                    darkMode
+                      ? "bg-gradient-to-r from-gray-200 to-white"
+                      : "bg-gradient-to-r from-gray-700 to-gray-900"
+                  }`}
+                ></div>
               </button>
-              <button className={`px-8 py-4 border-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
-                darkMode
-                  ? "border-gray-600 text-gray-200 bg-gray-900 hover:bg-gray-800 hover:border-gray-500"
-                  : "border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400"
-              }`}>
+              <button
+                className={`px-8 py-4 border-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
+                  darkMode
+                    ? "border-gray-600 text-gray-200 bg-gray-900 hover:bg-gray-800 hover:border-gray-500"
+                    : "border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400"
+                }`}
+              >
                 Download Resume
               </button>
             </div>
