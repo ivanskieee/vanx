@@ -109,6 +109,7 @@ const CombinedNavbarBanner = () => {
   };
 
   useEffect(() => {
+    console.count();
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
