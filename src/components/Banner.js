@@ -11,7 +11,7 @@ import {
   BarChart3,
   Lightbulb,
 } from "lucide-react";
-import bgimg from "./pics/ayban2.png";
+import bgimg from "./pics/ayban.png";
 import OIP from "./pics/11.png";
 import OIPS from "./pics/22.png";
 import PYTHO from "./pics/33.png";
@@ -34,7 +34,6 @@ const CombinedNavbarBanner = () => {
   const [texts] = useState([
     "Hello, I'm Ivan Brilata",
     "Aspiring Back-end Developer",
-    "Problem Solver",
     "Ruby on Rails Developer",
   ]);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -507,83 +506,18 @@ const CombinedNavbarBanner = () => {
 
         {/* Right Content - Profile Image */}
         <div
-          className={`flex-1 flex justify-center lg:justify-end mt-12 lg:mt-0 pr-8 lg:pr-16 transition-all duration-1000 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          className={`flex-1 flex justify-center lg:justify-end mt-12 lg:mt-0 pr-4 md:pr-6 lg:pr-8 xl:pr-12 transition-all duration-500 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <div className="relative">
-            <div className="relative group">
-              {/* Modern ambient glow */}
-              <div
-                className={`absolute -inset-12 transition-all duration-1000 ${
-                  darkMode
-                    ? "bg-gradient-to-tr from-cyan-500/10 via-purple-500/8 to-pink-500/10 blur-3xl"
-                    : "bg-gradient-to-tr from-blue-500/8 via-indigo-500/6 to-purple-500/8 blur-3xl"
-                }`}
-              ></div>
-
-              {/* Main image container */}
-              <div className="relative w-80 h-96 lg:w-96 lg:h-[28rem] transition-all duration-700">
-                <img
-                  src={bgimg}
-                  alt="Ivan's Profile"
-                  className="w-full h-full object-contain transition-all duration-700 group-hover:brightness-110 group-hover:saturate-110"
-                  style={{
-                    filter: darkMode
-                      ? `
-                drop-shadow(0 40px 100px rgba(56, 189, 248, 0.15))
-                drop-shadow(0 20px 60px rgba(147, 51, 234, 0.10))
-                drop-shadow(0 0 40px rgba(236, 72, 153, 0.08))
-                contrast(108%)
-                saturate(105%)
-              `
-                      : `
-                drop-shadow(0 40px 100px rgba(59, 130, 246, 0.20))
-                drop-shadow(0 20px 60px rgba(99, 102, 241, 0.15))
-                drop-shadow(0 0 40px rgba(139, 92, 246, 0.10))
-                contrast(108%)
-                saturate(105%)
-              `,
-                  }}
-                />
-
-                {/* Modern holographic reflection */}
-                <div
-                  className={`absolute bottom-0 left-0 right-0 h-16 transition-all duration-700 opacity-30 group-hover:opacity-50 ${
-                    darkMode
-                      ? "bg-gradient-to-t from-cyan-400/20 via-purple-400/10 to-transparent"
-                      : "bg-gradient-to-t from-blue-400/20 via-indigo-400/10 to-transparent"
-                  }`}
-                  style={{
-                    maskImage:
-                      "linear-gradient(to top, black 0%, transparent 100%)",
-                    WebkitMaskImage:
-                      "linear-gradient(to top, black 0%, transparent 100%)",
-                    transform: "scaleY(-1)",
-                    filter: "blur(2px)",
-                  }}
-                ></div>
-              </div>
-
-              {/* Floating particles effect */}
-              <div
-                className={`absolute top-1/4 -left-2 w-1 h-1 rounded-full animate-pulse transition-all duration-1000 ${
-                  darkMode ? "bg-cyan-400/60" : "bg-blue-500/60"
-                }`}
-                style={{ animationDelay: "0s" }}
-              ></div>
-              <div
-                className={`absolute top-1/3 -right-3 w-1.5 h-1.5 rounded-full animate-pulse transition-all duration-1000 ${
-                  darkMode ? "bg-purple-400/60" : "bg-indigo-500/60"
-                }`}
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className={`absolute bottom-1/4 -left-1 w-0.5 h-0.5 rounded-full animate-pulse transition-all duration-1000 ${
-                  darkMode ? "bg-pink-400/60" : "bg-purple-500/60"
-                }`}
-                style={{ animationDelay: "2s" }}
-              ></div>
+            {/* Profile Image Container */}
+            <div className="w-80 h-96 lg:w-96 lg:h-[28rem] rounded-lg overflow-hidden">
+              <img
+                src={bgimg}
+                alt="Ivan's Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -700,8 +634,6 @@ const CombinedNavbarBanner = () => {
                   : "bg-blue-50 border border-blue-200 text-blue-700"
               }`}
             >
-              <div className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
-              Technical Expertise
             </div>
 
             <h2

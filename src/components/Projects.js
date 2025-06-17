@@ -126,9 +126,6 @@ const Projects = () => {
         {/* Professional Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-[2px] bg-gradient-to-r from-slate-400 to-slate-600"></div>
-            <span className="text-sm font-semibold text-slate-500 tracking-wider uppercase">Portfolio</span>
-            <div className="w-12 h-[2px] bg-gradient-to-r from-slate-600 to-slate-400"></div>
           </div>
           
           <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
