@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="text-center">
           {/* Header */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 transition-all duration-500">
               Let's Connect
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">

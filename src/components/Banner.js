@@ -29,11 +29,50 @@ const CombinedNavbarBanner = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [isSkillsVisible, setIsSkillsVisible] = useState(false);
+  const [showSocialLinks, setShowSocialLinks] = useState(false);
+
+  const socialLinks = [
+    {
+      name: "Facebook",
+      icon: "fab fa-facebook",
+      url: "https://www.facebook.com/Brilata.Ivan",
+      color: "hover:text-blue-600",
+      bgColor: "hover:bg-blue-50",
+    },
+    {
+      name: "Twitter",
+      icon: "fab fa-twitter",
+      url: "https://x.com/ChubbyxGwapo",
+      color: "hover:text-sky-500",
+      bgColor: "hover:bg-sky-50",
+    },
+    {
+      name: "Instagram",
+      icon: "fab fa-instagram",
+      url: "https://www.instagram.com/ivannskieee/",
+      color: "hover:text-pink-600",
+      bgColor: "hover:bg-pink-50",
+    },
+    {
+      name: "LinkedIn",
+      icon: "fab fa-linkedin",
+      url: "https://www.linkedin.com/in/ivan-brilata-b189b0283/",
+      color: "hover:text-blue-700",
+      bgColor: "hover:bg-blue-50",
+    },
+    {
+      name: "GitHub",
+      icon: "fab fa-github",
+      url: "https://github.com/ivanskieee",
+      color: "hover:text-gray-800",
+      bgColor: "hover:bg-gray-50",
+    },
+  ];
 
   // Typing effect states
   const [texts] = useState([
     "Hello, I'm Ivan Brilata",
-    "Aspiring Back-end Developer",
+    "Back-end Developer",
     "Ruby on Rails Developer",
   ]);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -417,32 +456,32 @@ const CombinedNavbarBanner = () => {
 
       {/* Main Content */}
       <div
-        className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center px-6 lg:px-12 pt-20"
+        className="relative z-10 min-h-screen flex items-center justify-center px-6 lg:px-12 pt-20"
         onMouseMove={handleMouseMove}
       >
-        {/* Left Content */}
+        {/* Centered Content */}
         <div
-          className={`flex-1 max-w-2xl pl-8 lg:pl-16 transition-all duration-1000 ${
+          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Badge */}
             <div
-              className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 ${
+              className={`inline-flex items-center px-6 py-3 rounded-full text-sm font-medium transition-all duration-500 ${
                 darkMode
                   ? "bg-green-900/50 border border-green-700 text-green-300"
                   : "bg-green-50 border border-green-200 text-green-700"
               }`}
             >
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></div>
               Available for opportunities
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <h1
-                className={`text-4xl lg:text-6xl font-bold leading-tight transition-all duration-500 min-h-[4rem] lg:min-h-[7rem] ${
+                className={`text-5xl lg:text-7xl font-bold leading-tight transition-all duration-500 ${
                   darkMode ? "text-white" : "text-black"
                 }`}
               >
@@ -473,7 +512,7 @@ const CombinedNavbarBanner = () => {
 
             {/* Description */}
             <p
-              className={`text-lg leading-relaxed max-w-xl transition-all duration-500 ${
+              className={`text-xl leading-relaxed max-w-2xl mx-auto transition-all duration-500 ${
                 darkMode ? "text-gray-300" : "text-gray-600"
               }`}
             >
@@ -482,16 +521,19 @@ const CombinedNavbarBanner = () => {
               amazing together.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            {/* CTA Button */}
+            <div className="pt-4">
               <button
-                className={`group relative px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+                onClick={() => setShowSocialLinks(!showSocialLinks)}
+                className={`group relative px-10 py-4 rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                   darkMode
                     ? "bg-gradient-to-r from-white to-gray-200 text-gray-900 hover:shadow-white/25"
                     : "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:shadow-gray-500/25"
                 }`}
               >
-                <span className="relative z-10">View My Work</span>
+                <span className="relative z-10 flex items-center justify-center">
+                  Let's Connect
+                </span>
                 <div
                   className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
                     darkMode
@@ -501,24 +543,67 @@ const CombinedNavbarBanner = () => {
                 ></div>
               </button>
             </div>
-          </div>
-        </div>
 
-        {/* Right Content - Profile Image */}
-        <div
-          className={`flex-1 flex justify-center lg:justify-end mt-12 lg:mt-0 pr-4 md:pr-6 lg:pr-8 xl:pr-12 transition-all duration-500 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="relative">
-            {/* Profile Image Container */}
-            <div className="w-80 h-96 lg:w-96 lg:h-[28rem] rounded-lg overflow-hidden">
-              <img
-                src={bgimg}
-                alt="Ivan's Profile"
-                className="w-full h-full object-cover"
-              />
+            {/* Social Links */}
+            <div
+              className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                showSocialLinks
+                  ? "max-h-32 opacity-100 transform translate-y-0"
+                  : "max-h-0 opacity-0 transform -translate-y-4"
+              }`}
+            >
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
+                {socialLinks.map((social, index) => (
+                  <button
+                    key={social.name}
+                    onClick={() =>
+                      window.open(social.url, "_blank", "noopener,noreferrer")
+                    }
+                    className={`group flex items-center space-x-3 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+                      darkMode
+                        ? "bg-gray-800/50 text-gray-300 hover:bg-gray-700/70 hover:text-white border border-gray-700/50"
+                        : "bg-white/80 text-gray-700 hover:bg-white hover:text-gray-900 border border-gray-200 hover:border-gray-300"
+                    }`}
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                      animation: showSocialLinks
+                        ? "slideInUp 0.5s ease-out forwards"
+                        : "none",
+                    }}
+                  >
+                    <i
+                      className={`${
+                        social.icon
+                      } text-lg transition-colors duration-200 ${
+                        darkMode
+                          ? social.color.replace(
+                              "hover:text-",
+                              "group-hover:text-"
+                            )
+                          : social.color.replace(
+                              "hover:text-",
+                              "group-hover:text-"
+                            )
+                      }`}
+                    ></i>
+                    <span className="text-sm">{social.name}</span>
+                  </button>
+                ))}
+              </div>
             </div>
+
+            <style jsx>{`
+              @keyframes slideInUp {
+                from {
+                  opacity: 0;
+                  transform: translateY(20px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+            `}</style>
           </div>
         </div>
       </div>
@@ -531,19 +616,12 @@ const CombinedNavbarBanner = () => {
       >
         <div className="text-center mb-12">
           <h2
-            className={`text-2xl lg:text-3xl font-bold mb-4 transition-all duration-500 ${
+            className={`text-4xl lg:text-5xl font-bold mb-6 transition-all duration-500 ${
               darkMode ? "text-white" : "text-gray-900"
             }`}
           >
             Technologies & Tools
           </h2>
-          <p
-            className={`transition-all duration-500 ${
-              darkMode ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            Languages and frameworks I work with
-          </p>
         </div>
 
         {/* Smooth Animated Logo Carousel */}
@@ -627,15 +705,6 @@ const CombinedNavbarBanner = () => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <div
-              className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 transition-all duration-500 ${
-                darkMode
-                  ? "bg-blue-900/50 border border-blue-700 text-blue-300"
-                  : "bg-blue-50 border border-blue-200 text-blue-700"
-              }`}
-            >
-            </div>
-
             <h2
               className={`text-4xl lg:text-5xl font-bold mb-6 transition-all duration-500 ${
                 darkMode ? "text-white" : "text-gray-900"
@@ -652,15 +721,6 @@ const CombinedNavbarBanner = () => {
                 Capabilities
               </span>
             </h2>
-
-            <p
-              className={`text-lg leading-relaxed max-w-3xl mx-auto transition-all duration-500 ${
-                darkMode ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              Here are some key skills that I have developed as an IT student,
-              building a strong foundation for innovative web solutions.
-            </p>
           </div>
 
           {/* Skills Grid */}
@@ -771,22 +831,6 @@ const CombinedNavbarBanner = () => {
             }`}
           >
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                className={`group relative px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                  darkMode
-                    ? "bg-gradient-to-r from-white to-gray-200 text-gray-900 hover:shadow-white/25"
-                    : "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:shadow-gray-500/25"
-                }`}
-              >
-                <span className="relative z-10">View My Projects</span>
-                <div
-                  className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                    darkMode
-                      ? "bg-gradient-to-r from-gray-200 to-white"
-                      : "bg-gradient-to-r from-gray-700 to-gray-900"
-                  }`}
-                ></div>
-              </button>
               <button
                 className={`px-8 py-4 border-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
                   darkMode

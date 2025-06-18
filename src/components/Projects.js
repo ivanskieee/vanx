@@ -128,14 +128,10 @@ const Projects = () => {
           <div className="inline-flex items-center gap-3 mb-6">
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 transition-all duration-500">
             Featured Projects
           </h2>
           
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-            A comprehensive showcase of technical expertise spanning game development, 
-            web applications, and enterprise solutions
-          </p>
         </div>
 
         {/* Projects Grid */}
@@ -256,29 +252,6 @@ const Projects = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Professional Footer */}
-        <div className="text-center border-t border-gray-200 pt-12">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-slate-900 mb-3">
-              Explore Complete Portfolio
-            </h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Discover additional projects and technical implementations across various domains
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
-              <span>View All Projects</span>
-              <ExternalLink className="w-4 h-4" />
-            </button>
-            
-            <button className="border-2 border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:bg-slate-50">
-              Download Portfolio PDF
-            </button>
-          </div>
         </div>
       </div>
     </section>
