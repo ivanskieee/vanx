@@ -6,8 +6,15 @@ import picture3 from './pics/cert3.png';
 import picture4 from './pics/isite.jpg';
 import picture5 from './pics/digi.png';
 import picture6 from './pics/666.png';
+import picture7 from './pics/cert7.jpg'; // New import added
 
 const credentials = [
+  {
+    title: 'Internet of Things: The Future of Technology', // Replace with actual title
+    year: '2025', // Replace with actual year
+    image: picture7,
+    category: 'Webinar', // Replace with actual category
+  },
   {
     title: '"Ctrl+Alt+Defend: Cybersecurity 101 for Students"',
     year: '2024',

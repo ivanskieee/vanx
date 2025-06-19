@@ -82,7 +82,7 @@ const Footer = () => {
             </p>
 
             <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-              <span>© 2024 Ivan Brilata</span>
+              <span>© 2025 Ivan Brilata</span>
               <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
               <span>Professional Portfolio</span>
               <span className="w-1 h-1 bg-gray-400 rounded-full"></span>

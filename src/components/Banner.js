@@ -830,17 +830,21 @@ const CombinedNavbarBanner = () => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                className={`px-8 py-4 border-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
-                  darkMode
-                    ? "border-gray-600 text-gray-200 bg-gray-900 hover:bg-gray-800 hover:border-gray-500"
-                    : "border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400"
-                }`}
-              >
-                Download Resume
-              </button>
-            </div>
+            <button
+              className={`px-8 py-4 border-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
+                darkMode
+                  ? "border-gray-600 text-gray-200 bg-gray-900 hover:bg-gray-800 hover:border-gray-500"
+                  : "border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400"
+              }`}
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = "/resumebrilata.pdf"; // Fixed path
+                link.download = "brilataresume.pdf";
+                link.click();
+              }}
+            >
+              Download Resume
+            </button>
           </div>
         </div>
       </section>
