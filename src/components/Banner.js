@@ -19,7 +19,7 @@ import CS from "./pics/44.png";
 import BS from "./pics/55.png";
 import IT from "./pics/66.png";
 import REACT from "./pics/88.png";
-import NODE from "./pics/99.png";
+import NODE from "./pics/nodej.png";
 import RUBY from "./pics/ror.png";
 import TAIL from "./pics/tail.png";
 
