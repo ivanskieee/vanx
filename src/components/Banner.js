@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 import {
   Menu,
   X,
@@ -24,10 +25,12 @@ import RUBY from "./pics/ror.png";
 import TAIL from "./pics/tail.png";
 
 const CombinedNavbarBanner = () => {
+  // Use only ThemeContext - remove local darkMode state
+  const { darkMode, toggleDarkMode, themeClasses } = useTheme();
+  
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [isSkillsVisible, setIsSkillsVisible] = useState(false);
   const [showSocialLinks, setShowSocialLinks] = useState(false);
 
@@ -134,10 +137,6 @@ const CombinedNavbarBanner = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
@@ -147,7 +146,6 @@ const CombinedNavbarBanner = () => {
   };
 
   useEffect(() => {
-    console.count();
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -169,9 +167,10 @@ const CombinedNavbarBanner = () => {
     };
   }, []);
 
-  const themeClasses = darkMode
-    ? "bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white"
-    : "bg-gradient-to-br from-white via-gray-50 to-gray-100 text-gray-900";
+  // Remove these local theme classes and use the ones from ThemeContext
+  // const themeClasses = darkMode
+  //   ? "bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white"
+  //   : "bg-gradient-to-br from-white via-gray-50 to-gray-100 text-gray-900";
 
   const navbarClasses = darkMode
     ? "bg-black/80 backdrop-blur-md border-gray-700/50 text-white"
@@ -283,7 +282,7 @@ const CombinedNavbarBanner = () => {
 
             {/* Controls - Minimal */}
             <div className="flex items-center space-x-3">
-              {/* Theme Toggle */}
+              {/* Theme Toggle - Using toggleDarkMode from ThemeContext */}
               <button
                 onClick={toggleDarkMode}
                 className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${
