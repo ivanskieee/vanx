@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Gamepad2, Hotel, CreditCard, Database, Code, Calendar, ArrowLeft, ExternalLink } from 'lucide-react';
+import SALES from "./pics/sales.png";
 
 const Projects = () => {
   const { darkMode } = useTheme(); // Get the current theme state
@@ -9,14 +10,14 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Snake Game',
-      subtitle: 'Classic Arcade Recreation',
+      title: 'Sales Dashboard',
+      subtitle: 'A Functional Dashboard Designed for the First Client',
       description: 'A sophisticated implementation of the classic Snake game using GDevelop engine, featuring enhanced game mechanics, smooth animations, and modern visual design principles. The game incorporates advanced collision detection, progressive difficulty scaling, and responsive controls optimized for both desktop and mobile platforms.',
-      image: '/api/placeholder/400/300',
-      category: 'Game Development',
-      tech: ['GDevelop', 'JavaScript', 'Game Logic', 'Animation'],
-      icon: Gamepad2,
-      year: '2024',
+      image: SALES,
+      category: 'Web Development',
+      tech: ['Ruby', 'React JS', 'Tailwind CSS'],
+      icon: Code,
+      year: '2025',
       status: 'Completed',
       features: ['Responsive Controls', 'Progressive Difficulty', 'Score System', 'Mobile Optimized']
     },
