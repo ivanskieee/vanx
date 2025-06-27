@@ -837,8 +837,8 @@ const CombinedNavbarBanner = () => {
               }`}
               onClick={() => {
                 const link = document.createElement("a");
-                link.href = "/resumebrilata.pdf"; // Fixed path
-                link.download = "brilataresume.pdf";
+                link.href = "/BRILATA_RESUME.pdf"; // Fixed path
+                link.download = "BRILATA_RESUME.pdf";
                 link.click();
               }}
             >
