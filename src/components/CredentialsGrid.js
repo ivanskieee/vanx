@@ -75,7 +75,7 @@ const CredentialsGrid = () => {
             </svg>
           </div>
           <h2 className={`text-4xl lg:text-5xl font-bold mb-6 transition-all duration-500 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-            Professional Credentials
+            Certifications
           </h2>
         </div>
 

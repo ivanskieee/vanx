@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Gamepad2, Hotel, CreditCard, Database, Code, Calendar, ArrowLeft, ExternalLink } from 'lucide-react';
 import SALES from "./pics/sales.png";
+import TWITTY from "./pics/twitty.png";
 
 const Projects = () => {
   const { darkMode } = useTheme(); // Get the current theme state
@@ -23,13 +24,13 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: 'One Piece Adventure',
-      subtitle: 'Interactive Gaming Experience',
+      title: 'Twitty',
+      subtitle: 'A simple clone of the Twitter application',
       description: 'An immersive adventure game inspired by the One Piece universe, developed using Greenfoot framework with object-oriented programming principles and dynamic combat systems. Features include character progression, interactive storylines, and seamless gameplay mechanics that capture the essence of the beloved anime series.',
-      image: '/api/placeholder/400/300',
-      category: 'Game Development',
-      tech: ['Greenfoot', 'Java', 'OOP', 'Game Design'],
-      icon: Gamepad2,
+      image: TWITTY,
+      category: 'Web Development',
+      tech: ['Ruby', 'Javascript'],
+      icon: Code,
       year: '2024',
       status: 'Completed',
       features: ['Character Progression', 'Dynamic Combat', 'Story Mode', 'Interactive UI']
@@ -149,12 +150,9 @@ const Projects = () => {
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className={`text-5xl lg:text-6xl font-bold ${textClasses} mb-6 transition-all duration-500`}>
-            Project Portfolio
+          <h1 className={`text-4xl lg:text-5xl font-bold ${textClasses} mb-6 transition-all duration-500`}>
+            Some of My Projects
           </h1>
-          <p className={`text-xl ${subtextClasses} max-w-3xl mx-auto leading-relaxed transition-all duration-500`}>
-            A comprehensive showcase of technical expertise and creative solutions across various domains
-          </p>
         </div>
 
         {/* Projects Grid */}
@@ -310,13 +308,6 @@ const Projects = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Footer Note */}
-        <div className="text-center mt-16">
-          <p className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} text-sm transition-all duration-300`}>
-            Click on any project card to explore detailed information and technical specifications
-          </p>
         </div>
       </div>
 
